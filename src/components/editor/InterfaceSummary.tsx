@@ -333,40 +333,7 @@ class InterfaceSummary extends Component<
           </CopyToClipboard>
         )}
         {
-          editable && (
-            <ul className="nav nav-tabs" role="tablist">
-              <li className="nav-item" onClick={this.switchPos(POS_TYPE.HEADER)} >
-                <button
-                  className={`nav-link ${posFilter === POS_TYPE.HEADER ? 'active' : ''}`}
-                  role="tab"
-                  data-toggle="tab"
-                >
-                  Headers
-              </button>
-              </li>
-              <li className="nav-item" onClick={this.switchPos(POS_TYPE.QUERY)} >
-                <button
-                  className={`nav-link ${posFilter === POS_TYPE.QUERY ? 'active' : ''}`}
-                  role="tab"
-                  data-toggle="tab"
-                >
-                  Query Params
-              </button>
-              </li>
-              <li className="nav-item" onClick={this.switchPos(POS_TYPE.BODY)} >
-                <button
-                  className={`nav-link ${posFilter === POS_TYPE.BODY ? 'active' : ''}`}
-                  role="tab"
-                  data-toggle="tab"
-                >
-                  Body Params
-              </button>
-              </li>
-            </ul>
-          )
-        }
-        {
-          editable && posFilter === POS_TYPE.BODY ? (
+          editable ? (
             <FormControl component="fieldset">
               <RadioGroup
                 aria-label="body type"

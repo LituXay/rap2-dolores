@@ -507,17 +507,16 @@ class PropertyList extends PureComponent<any, any> {
       return null
     }
     const { editable } = this.props // itf.locker && (itf.locker.id === auth.id)
-    let scopedProperties = properties
+    const scopedProperties = properties
       .map((property: any) => ({ ...property }))
       .filter((property: any) => property.scope === scope)
-    if (scope === 'request' && editable) {
-      scopedProperties = scopedProperties.filter((s: any) => s.pos === posFilter)
-    }
+      .filter((property: any) => property.pos ? property.pos === posFilter : true)
 
     return (
       <section className="PropertyList">
         <div className="header clearfix">
           <span className="title">{title || `${label}属性`}</span>
+          {scope === 'request' && posFilter === 3 ? (<span>数据类型：{bodyOption}</span>) : ''}
           <div className="toolbar">
             <ButtonGroup size="small" color="primary">
               {editable && [
@@ -528,12 +527,14 @@ class PropertyList extends PureComponent<any, any> {
                   导入
                 </Button>,
               ]}
-              <Button
-                className={this.state.previewer ? 'checked-button' : ''}
-                onClick={this.handleClickPreviewerButton}
-              >
-                预览
-              </Button>
+              {scope === 'response' && (
+                  <Button
+                      className={this.state.previewer ? 'checked-button' : ''}
+                      onClick={this.handleClickPreviewerButton}
+                  >
+                    预览
+                  </Button>
+              )}
             </ButtonGroup>
           </div>
         </div>

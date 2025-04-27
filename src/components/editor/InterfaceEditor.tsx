@@ -12,9 +12,18 @@ import { updateInterface } from 'actions/interface'
 import Spin from '../../components/utils/Spin'
 import { showMessage, MSG_TYPE } from 'actions/common'
 
-export const RequestPropertyList = (props: any) => {
-  return <PropertyList scope="request" title="请求参数" label="请求" {...props} />
+export const RequestHeaderPropertyList = (props: any) => {
+  return <PropertyList scope="request" title="请求头" label="请求" {...props} />
 }
+
+export const QueryParamsPropertyList = (props: any) => {
+  return <PropertyList scope="request" title="url参数" label="请求" {...props} />
+}
+
+export const RequestBodyPropertyList = (props: any) => {
+  return <PropertyList scope="request" title="请求body" label="请求" {...props} />
+}
+
 export const ResponsePropertyList = (props: any) => (
   <PropertyList scope="response" title="响应内容" label="响应" {...props} />
 )
@@ -144,7 +153,31 @@ class InterfaceEditor extends Component<InterfaceEditorProps, InterfaceEditorSta
 
         {this.state.properties ? (
           <>
-            <RequestPropertyList
+            <RequestHeaderPropertyList
+                properties={this.state.properties}
+                auth={auth}
+                editable={editable}
+                repository={repository}
+                mod={mod}
+                interfaceId={itf.id}
+                bodyOption={bodyOption}
+                posFilter={1}
+                handleChangeProperty={this.handleChangeProperty}
+                handleDeleteMemoryProperty={this.handleDeleteMemoryProperty}
+            />
+            <QueryParamsPropertyList
+                properties={this.state.properties}
+                auth={auth}
+                editable={editable}
+                repository={repository}
+                mod={mod}
+                interfaceId={itf.id}
+                bodyOption={bodyOption}
+                posFilter={2}
+                handleChangeProperty={this.handleChangeProperty}
+                handleDeleteMemoryProperty={this.handleDeleteMemoryProperty}
+            />
+            <RequestBodyPropertyList
               properties={this.state.properties}
               auth={auth}
               editable={editable}
@@ -152,7 +185,7 @@ class InterfaceEditor extends Component<InterfaceEditorProps, InterfaceEditorSta
               mod={mod}
               interfaceId={itf.id}
               bodyOption={bodyOption}
-              posFilter={this.state.summaryState.posFilter}
+              posFilter={3}
               handleChangeProperty={this.handleChangeProperty}
               handleDeleteMemoryProperty={this.handleDeleteMemoryProperty}
             />
