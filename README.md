@@ -1,3 +1,5 @@
+rap2-dolores的一个可以打包的版本，基于官方rap2-dolores-2.2.3-relase，并且修改了请求参数的编辑界面，让请求头，url参数和请求body的区分更明显
+
 # 0. 部署说明
 请看[官方文档](https://github.com/thx/rap2-dolores)
 
