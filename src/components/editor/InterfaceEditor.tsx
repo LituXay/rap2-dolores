@@ -196,6 +196,7 @@ class InterfaceEditor extends Component<InterfaceEditorProps, InterfaceEditorSta
               repository={repository}
               mod={mod}
               interfaceId={itf.id}
+              posFilter={2}
               handleChangeProperty={this.handleChangeProperty}
               handleDeleteMemoryProperty={this.handleDeleteMemoryProperty}
             />
